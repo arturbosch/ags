@@ -1,0 +1,36 @@
+.volumeSlider {
+  /*padding: 0px*/
+}
+
+.volumeSlider button {
+  all: unset;
+}
+.volumeSlider button:hover {
+  all: unset;
+}
+
+.volumeSlider image {
+  background-color: white;
+  border-radius: 13px 0px 0px 13px;
+  color: black;
+  padding: 0px 20px 0px 8px;
+}
+
+.volumeSlider scale,
+.volumeSlider scale contents {
+  border-radius: 0px 13px 13px 0px;
+}
+
+.volumeSlider scale trough {
+  border-radius: inherit;
+  min-height: 22px;
+  background-color: @bg2;
+}
+
+.volumeSlider scale highlight {
+  background-color: white;
+}
+
+.volumeSlider scale slider {
+  all: unset;
+}

@@ -1,0 +1,48 @@
+@import url("./everforest.css");
+
+* {
+  font-family: Monospace;
+  font-size: 13px;
+  background-color: @background;
+  color: @white-light;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+/*Workspaces=================================================================*/
+.workspaces * {
+  transition: none;
+}
+
+.workspaces label {
+  color: @white-light;
+}
+
+.workspaces button {
+  border-radius: 0px;
+  padding: 2px 9px;
+  border: none;
+}
+
+.workspaces .visible,
+.workspaces .visible * {
+  background-color: rgba(30, 30, 30, 1);
+}
+
+.workspaces button.focused,
+.workspaces button.focused > label {
+  background-color: @red;
+  color: @background;
+}
+
+/*Stats======================================================================*/
+
+.stats > * {
+  margin: 0 10px;
+}
+
+.clock {
+  margin: 0 10px;
+}

@@ -1,0 +1,47 @@
+@import url("./style/colors.css");
+@import url("./style/workspaces.css");
+@import url("./style/popup.css");
+@import url("./style/bluedemon.css");
+@import url("./style/mediaplayer.css");
+@import url("./style/netdemon.css");
+@import url("./style/sound.css");
+@import url("./style/power.css");
+
+* {
+  font-family: Cantarell;
+  font-weight: normal;
+  font-size: 13px;
+  background-color: transparent;
+  padding: 0px;
+  min-width: 0px;
+  min-height: 0px;
+  color: @fg;
+}
+
+button:hover {
+  background-color: @hover;
+}
+
+.bar {
+  background-color: @bar;
+}
+
+.clock {
+  margin-left: 8px;
+}
+
+.right button {
+  padding: 0 5px;
+}
+
+.left > * {
+  padding: 0 3px;
+}
+
+.right:last-child {
+  margin-right: 10px;
+}
+
+.left:first-child {
+  margin-left: 5px;
+}
