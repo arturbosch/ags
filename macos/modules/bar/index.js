@@ -1,7 +1,38 @@
-export { default as Workspaces } from "./workspaces.js";
-export { default as Keymap } from "./keymap.js";
-export { default as Volume } from "./volume.js";
-export { default as Clock } from "./clock.js";
-export { default as Battery } from "./battery.js";
-export { default as Network } from "./network.js";
-export { default as Bluetooth } from "./bluetooth.js";
+import Workspaces from "./workspaces.js";
+import Keymap from "./keymap.js";
+import Volume from "./volume.js";
+import Clock from "./clock.js";
+import Battery from "./battery.js";
+import Network from "./network.js";
+import Bluetooth from "./bluetooth.js";
+
+// layout of the Bar
+function Left() {
+  return Widget.Box({
+    className: "left",
+    hpack: "start",
+    children: [Workspaces(), Keymap()],
+  });
+}
+
+function Right() {
+  return Widget.Box({
+    className: "right",
+    hpack: "end",
+    children: [Bluetooth(), Network(), Volume(), Battery(), Clock()],
+  });
+}
+
+export default function bar(monitor) {
+  return Widget.Window({
+    name: `bar${monitor}`, // name has to be unique
+    anchor: ["top", "left", "right"],
+    class_name: "bar",
+    monitor,
+    exclusivity: "exclusive",
+    child: Widget.CenterBox({
+      start_widget: Left(),
+      end_widget: Right(),
+    }),
+  });
+}

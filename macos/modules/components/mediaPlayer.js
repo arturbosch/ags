@@ -162,7 +162,7 @@ function mplayer(player) {
   });
 }
 
-export default function Player() {
+export default function mediaPlayer() {
   return Widget.Box({
     className: "mediaplayer",
     css: "padding: 0px; margin: 0px;",

@@ -1,122 +1,146 @@
-import * as bar from "./modules/bar/index.js";
-import Sound from "./modules/sound.js";
+import bar from "./modules/bar/index.js";
+import Sound from "./modules/sounddemon.js";
 import Bluetooth from "./modules/bluedemon.js";
-import Wifi from "./modules/wifi.js";
-import Power from "./modules/power.js";
+import Wifi from "./modules/netdemon.js";
+import Power from "./modules/powerdemon.js";
+import Control from "./modules/controldemon.js";
+const hyprland = await Service.import("hyprland");
 
 const openWindow = [];
+const monitors = [];
 
 export function togglePopup(name) {
-  if (openWindow[0] == name) {
-    App.closeWindow(name);
-    App.closeWindow("windowCloser");
+  let mon = 0;
+  hyprland.monitors.forEach((monitor) => {
+    if (monitor.focused == true) {
+      mon = monitors.indexOf(monitor.id);
+    }
+  });
+
+  if (openWindow[0] == name + mon) {
+    App.closeWindow(name + mon);
+    App.closeWindow(`windowCloser${mon}`);
     openWindow[0] = "";
   } else {
     if (openWindow[0]) {
       App.closeWindow(openWindow[0]);
     }
-    openWindow[0] = name;
-    App.openWindow("windowCloser");
-    App.openWindow(name);
+    openWindow[0] = name + mon;
+    App.openWindow(`windowCloser${mon}`);
+    App.openWindow(name + mon);
   }
 }
 
-// layout of the bar
-function Left() {
-  return Widget.Box({
-    className: "left",
-    hpack: "start",
-    children: [bar.Workspaces(), bar.Keymap()],
+const netdemon = (monitor) =>
+  Widget.Window({
+    name: `netdemon${monitor}`,
+    visible: false,
+    anchor: ["top", "right"],
+    monitor,
+    margins: [7, 70],
+    child: Wifi(),
   });
-}
 
-function Right() {
-  return Widget.Box({
-    className: "right",
-    hpack: "end",
-    children: [
-      bar.Bluetooth(),
-      bar.Network(),
-      bar.Volume(),
-      bar.Battery(),
-      bar.Clock(),
-    ],
+const bluedemon = (monitor) =>
+  Widget.Window({
+    name: `bluedemon${monitor}`,
+    visible: false,
+    anchor: ["top", "right"],
+    monitor,
+    margins: [7, 110],
+    child: Bluetooth(),
   });
-}
 
-function Bar(monitor = 0) {
-  return Widget.Window({
-    name: `bar${monitor}`, // name has to be unique
-    anchor: ["top", "left", "right"],
-    class_name: "bar",
-    exclusivity: "exclusive",
-    child: Widget.CenterBox({
-      start_widget: Left(),
-      end_widget: Right(),
+const sounddemon = (monitor = 0) =>
+  Widget.Window({
+    margins: [7, 20],
+    visible: false,
+    name: `sounddemon${monitor}`,
+    monitor,
+    anchor: ["top", "right"],
+    child: Sound(),
+  });
+
+const powerdemon = (monitor) =>
+  Widget.Window({
+    margins: [7, 20],
+    visible: false,
+    name: `powerdemon${monitor}`,
+    monitor,
+    anchor: ["top", "right"],
+    child: Power(),
+  });
+
+const controldemon = (monitor) =>
+  Widget.Window({
+    margins: [7],
+    visible: false,
+    name: `controldemon${monitor}`,
+    monitor,
+    anchor: ["top", "right"],
+    child: Control(),
+  });
+
+const closer = (monitor) =>
+  Widget.Window({
+    name: `windowCloser${monitor}`,
+    className: "windowCloser",
+    layer: "top",
+    visible: false,
+    anchor: ["top", "bottom", "left", "right"],
+    monitor,
+    child: Widget.EventBox({
+      onPrimaryClick: () => {
+        if (openWindow[0]) {
+          App.closeWindow(openWindow[0]);
+        }
+        App.closeWindow(`windowCloser${monitor}`);
+      },
     }),
   });
-}
-
-const netdemon = Widget.Window({
-  name: "netdemon",
-  visible: false,
-  anchor: ["top", "right"],
-  margins: [10, 70, 10, 70],
-  child: Wifi(),
-});
-
-const bluedemon = Widget.Window({
-  name: "bluedemon",
-  visible: false,
-  anchor: ["top", "right"],
-  margins: [10, 110],
-  child: Bluetooth(),
-});
-
-const sounddemon = Widget.Window({
-  margins: [10, 20],
-  visible: false,
-  name: "sounddemon",
-  anchor: ["top", "right"],
-  child: Sound(),
-});
-
-const powerdemon = Widget.Window({
-  margins: [10, 20],
-  visible: false,
-  name: "powerdemon",
-  anchor: ["top", "right"],
-  child: Power(),
-});
-
-const closer = Widget.Window({
-  name: "windowCloser",
-  className: "windowCloser",
-  layer: "top",
-  visible: false,
-  anchor: ["top", "bottom", "left", "right"],
-  child: Widget.EventBox({
-    onPrimaryClick: () => {
-      if (openWindow[0]) {
-        App.closeWindow(openWindow[0]);
-      }
-      App.closeWindow("windowCloser");
-    },
-  }),
-});
 
 App.config({
   iconTheme: "MoreWaita",
-  style: "./style.css",
-  windows: [Bar(), sounddemon, bluedemon, netdemon, powerdemon, closer],
+  style: `${App.configDir}/macos/style.css`,
 });
+
+const windows = [
+  bar,
+  sounddemon,
+  bluedemon,
+  netdemon,
+  powerdemon,
+  controldemon,
+  closer,
+];
+
+function populateMon() {
+  hyprland.monitors.forEach((mon) => {
+    monitors.push(mon.id);
+    windows.forEach((win) => App.addWindow(win(monitors.length - 1)));
+  });
+}
+
+populateMon();
+
+function refreshMon() {
+  monitors.length = 0;
+  App.windows.forEach((window) => {
+    App.removeWindow(window);
+  });
+  populateMon();
+}
+
+hyprland.connect("monitor-added", () => refreshMon());
+
+hyprland.connect("monitor-removed", () => refreshMon());
 
 Utils.monitorFile(
   `${App.configDir}`,
   // reload function
   () => {
     // main scss file
-    const css = `${App.configDir}/style.css`;
+    const css = `${App.configDir}/macos/style.css`;
     App.resetCss();
     App.applyCss(css);
   },

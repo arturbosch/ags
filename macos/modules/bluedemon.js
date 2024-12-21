@@ -54,77 +54,82 @@ function bluedevice(device) {
 
 const scanning = Variable(false);
 
-const scan = Widget.Stack({
-  children: {
-    load: Widget.Spinner(),
-    button: Widget.Button({
-      cursor: "pointer",
-      on_clicked: () => {
-        scanning.value = true;
-        Utils.execAsync(`bash -c "bluetoothctl --timeout 30 scan on"`).then(
-          () => (scanning.value = false),
-        );
-      },
-      child: Widget.Icon({
-        icon: "view-refresh-symbolic",
+const scan = () =>
+  Widget.Stack({
+    children: {
+      load: Widget.Spinner(),
+      button: Widget.Button({
+        cursor: "pointer",
+        on_clicked: () => {
+          scanning.value = true;
+          Utils.execAsync(`bash -c "bluetoothctl --timeout 30 scan on"`).then(
+            () => (scanning.value = false),
+          );
+        },
+        child: Widget.Icon({
+          icon: "view-refresh-symbolic",
+        }),
       }),
+    },
+    shown: scanning.bind().as((b) => (b ? "load" : "button")),
+  });
+
+const settings = () =>
+  Widget.Button({
+    cursor: "pointer",
+    on_clicked: () => {
+      Utils.execAsync(
+        "env XDG_CURRENT_DESKTOP=gnome gnome-control-center bluetooth",
+      );
+    },
+    child: Widget.Icon({
+      icon: "applications-system-symbolic",
     }),
-  },
-  shown: scanning.bind().as((b) => (b ? "load" : "button")),
-});
+  });
 
-const settings = Widget.Button({
-  cursor: "pointer",
-  on_clicked: () => {
-    Utils.execAsync(
-      "env XDG_CURRENT_DESKTOP=gnome gnome-control-center bluetooth",
-    );
-  },
-  child: Widget.Icon({
-    icon: "applications-system-symbolic",
-  }),
-});
+const header = () =>
+  Widget.CenterBox({
+    className: "header",
+    hexpand: true,
+    startWidget: Widget.Label({
+      hpack: "start",
+      css: "font-weight: bold;",
+      label: "Bluetooth",
+    }),
+    endWidget: Widget.Box({
+      hpack: "end",
+      children: [scan(), settings()],
+    }),
+  });
 
-const header = Widget.CenterBox({
-  className: "header",
-  hexpand: true,
-  startWidget: Widget.Label({
-    hpack: "start",
-    css: "font-weight: bold;",
-    label: "Bluetooth",
-  }),
-  endWidget: Widget.Box({
-    hpack: "end",
-    children: [scan, settings],
-  }),
-});
+const deviceblocks = () =>
+  Widget.Box({
+    class_name: "container",
+    vertical: true,
+    children: devices.as((dev) =>
+      dev
+        .filter((a) => a.name)
+        .sort((a, b) => Number(b.connected) - Number(a.connected))
+        .map(bluedevice),
+    ),
+  });
 
-const deviceblocks = Widget.Box({
-  class_name: "container",
-  vertical: true,
-  children: devices.as((dev) =>
-    dev
-      .filter((a) => a.name)
-      .sort((a, b) => Number(b.connected) - Number(a.connected))
-      .map(bluedevice),
-  ),
-});
+const devicebox = () =>
+  Widget.Scrollable({
+    hscroll: "never",
+    css: devices.as((dev) =>
+      dev.length < 5
+        ? `min-height:unset; min-height: calc(58px * ${dev.length})`
+        : `min-height:unset; min-height: calc(55px * 4)`,
+    ),
 
-const devicebox = Widget.Scrollable({
-  hscroll: "never",
-  css: devices.as(() =>
-    deviceblocks.children.length < 5
-      ? `min-height:unset; min-height: calc(58px * ${deviceblocks.children.length})`
-      : `min-height:unset; min-height: calc(55px * 4)`,
-  ),
-
-  child: deviceblocks,
-});
+    child: deviceblocks(),
+  });
 
 export default function Bluetooth() {
   return Widget.Box({
     vertical: true,
     class_names: ["popup", "bluedemon"],
-    children: [header, devicebox],
+    children: [header(), devicebox()],
   });
 }

@@ -1,11 +1,11 @@
 @import url("./style/colors.css");
 @import url("./style/workspaces.css");
 @import url("./style/popup.css");
-@import url("./style/bluedemon.css");
+@import url("./style/slider.css");
 @import url("./style/mediaplayer.css");
-@import url("./style/netdemon.css");
-@import url("./style/sound.css");
 @import url("./style/power.css");
+@import url("./style/notifications.css");
+@import url("./style/controlcenter.css");
 
 * {
   font-family: Cantarell;
@@ -24,6 +24,10 @@ button:hover {
 
 .bar {
   background-color: @bar;
+}
+
+.bar * {
+  font-weight: bold;
 }
 
 .clock {

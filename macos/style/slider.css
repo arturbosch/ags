@@ -1,36 +1,40 @@
-.volumeSlider {
-  /*padding: 0px*/
+.slider {
+  padding: 5px;
 }
-
-.volumeSlider button {
+.slider button {
   all: unset;
 }
-.volumeSlider button:hover {
+.slider button:hover {
   all: unset;
 }
 
-.volumeSlider image {
+.slider image {
   background-color: white;
   border-radius: 13px 0px 0px 13px;
   color: black;
   padding: 0px 20px 0px 8px;
 }
 
-.volumeSlider scale,
-.volumeSlider scale contents {
+.slider scale,
+.slider scale contents {
   border-radius: 0px 13px 13px 0px;
 }
 
-.volumeSlider scale trough {
+.slider scale trough {
   border-radius: inherit;
   min-height: 22px;
   background-color: @bg2;
 }
 
-.volumeSlider scale highlight {
+.slider scale highlight {
   background-color: white;
 }
 
-.volumeSlider scale slider {
+.slider scale slider {
   all: unset;
+}
+
+.slider:disabled scale highlight,
+.slider:disabled image {
+  background-color: grey;
 }

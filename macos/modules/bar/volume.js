@@ -19,11 +19,11 @@ function getIcon() {
   return `audio-volume-${icons[icon]}-symbolic`;
 }
 
-const icon = Widget.Icon({
-  icon: Utils.watch(getIcon(), audio.speaker, getIcon),
-});
-
 export default function Volume() {
+  const icon = Widget.Icon({
+    icon: Utils.watch(getIcon(), audio.speaker, getIcon),
+  });
+
   return Widget.Button({
     onClicked: () => {
       togglePopup("sounddemon");

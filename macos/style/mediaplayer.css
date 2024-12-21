@@ -1,7 +1,10 @@
 .player {
   border-radius: 13px 13px 0px 0px;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.2) 10%,
+    rgba(0, 0, 0, 0.5) 65%
+  );
 }
 
 .img {
