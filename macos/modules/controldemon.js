@@ -1,18 +1,16 @@
 const battery = await Service.import("battery");
-import { togglePopup } from "../config.js";
+import { togglePopup } from "../lib.js";
 
 import bluetoothButton from "./controlcenter/bluetooth.js";
 import networkButton from "./controlcenter/network.js";
 import nightlightButton from "./controlcenter/nightlight.js";
 import powerProfileButton from "./controlcenter/powerprofile.js";
-
 import brightnessSlider from "./components/brightnessSlider.js";
 import volumeSlider from "./components/volumeSlider.js";
 import mediaPlayer from "./components/mediaPlayer.js";
 
 const settings = () =>
   Widget.Button({
-    hpack: "end",
     cursor: "pointer",
     on_clicked: () => {
       Utils.execAsync("env XDG_CURRENT_DESKTOP=gnome gnome-control-center");
@@ -25,9 +23,13 @@ const settings = () =>
 const batteryStatus = () => {
   const value = battery.bind("percent").as((p) => (p > 0 ? p / 100 : 0));
 
-  const icon = battery
-    .bind("percent")
-    .as((p) => `battery-level-${Math.floor(p / 10) * 10}-symbolic`);
+  const icon = Utils.merge(
+    [battery.bind("percent"), battery.bind("charging")],
+    (p, charging) =>
+      charging
+        ? `battery-level-${Math.floor(p / 10) * 10}-charging-symbolic`
+        : `battery-level-${Math.floor(p / 10) * 10}-symbolic`,
+  );
 
   return Widget.Button({
     visible: battery.bind("available"),
@@ -59,78 +61,119 @@ const batteryStatus = () => {
   });
 };
 
+const revel = Widget.Revealer({
+  revealChild: false,
+  transitionDuration: 500,
+  transition: "slide_right",
+  css: "background-color: white;",
+  child: Widget.Box({
+    children: [
+      Widget.Button({
+        child: Widget.Icon({
+          icon: "system-shutdown-symbolic",
+        }),
+        onClicked: () => {
+          Utils.exec(`bash -c "shutdown -h now"`);
+        },
+      }),
+      Widget.Button({
+        child: Widget.Icon({
+          icon: "system-shutdown-symbolic",
+        }),
+        onClicked: () => {
+          Utils.exec(`bash -c "shutdown -h now"`);
+        },
+      }),
+      Widget.Button({
+        child: Widget.Icon({
+          icon: "system-shutdown-symbolic",
+        }),
+        onClicked: () => {
+          Utils.exec(`bash -c "shutdown -h now"`);
+        },
+      }),
+    ],
+  }),
+});
+
 const header = () =>
-  Widget.CenterBox({
+  Widget.Box({
     className: "header",
-    startWidget: batteryStatus(),
-    endWidget: Widget.Box({
-      hpack: "end",
-      children: [
-        Widget.Button({
-          child: Widget.Icon({
-            css: "color: coral;",
-            icon: "media-record-symbolic",
+    children: [
+      batteryStatus(),
+      Widget.Box({
+        hpack: "end",
+        hexpand: true,
+        children: [
+          Widget.Button({
+            child: Widget.Icon({
+              css: "color: coral;",
+              icon: "media-record-symbolic",
+            }),
           }),
-        }),
-        settings(),
-        Widget.Button({
-          child: Widget.Icon("system-lock-screen-symbolic"),
-        }),
-        Widget.Button({
-          child: Widget.Box({
-            children: [
-              Widget.Revealer({
-                revealChild: false,
-                transitionDuration: 500,
-                transition: "slide_right",
-                child: Widget.Box({
-                  children: [
-                    Widget.Icon({
-                      icon: "system-log-out-symbolic",
-                    }),
-                    Widget.Icon({
-                      icon: "system-reboot-symbolic",
-                    }),
-                  ],
-                }),
-              }),
-              Widget.Icon({
-                icon: "system-shutdown-symbolic",
-              }),
-            ],
+          settings(),
+          Widget.Button({
+            child: Widget.Icon("system-lock-screen-symbolic"),
+            onClicked: () => {
+              Utils.exec("bash -c 'loginctl lock-session'");
+            },
           }),
-        }),
-      ],
-    }),
+          Widget.Button({
+            child: Widget.Icon({
+              icon: "system-shutdown-symbolic",
+            }),
+            onClicked: () => {
+              revel.reveal_child = true;
+              console.log("hei");
+            },
+          }),
+        ],
+      }),
+    ],
   });
 
 const switches = () =>
-  Widget.CenterBox({
+  Widget.Box({
     className: "switches",
     hexpand: true,
     spacing: 8,
-    startWidget: Widget.Box({
-      vertical: true,
-      children: [networkButton(), nightlightButton()],
-    }),
-    endWidget: Widget.Box({
-      vertical: true,
-      children: [bluetoothButton(), powerProfileButton()],
-    }),
+    homogeneous: true,
+    children: [
+      Widget.Box({
+        hexpand: true,
+        vertical: true,
+        children: [networkButton(), nightlightButton()],
+      }),
+      Widget.Box({
+        hexpand: true,
+        vertical: true,
+        children: [bluetoothButton(), powerProfileButton()],
+      }),
+    ],
   });
 
-export default function Control() {
-  return Widget.Box({
+const control = () =>
+  Widget.Box({
     vertical: true,
     class_names: ["popup", "controlcenter"],
     children: [
       header(),
-      volumeSlider(),
+      volumeSlider(true),
       brightnessSlider(),
       Widget.Separator(),
       switches(),
       Widget.Separator(),
       mediaPlayer(),
     ],
+  });
+
+export default function controldemon(monitor) {
+  return Widget.Window({
+    margins: [7],
+    visible: false,
+    name: `controldemon${monitor}`,
+    monitor,
+    anchor: ["top", "right"],
+    child: control(),
   });
 }

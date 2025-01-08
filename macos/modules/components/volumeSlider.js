@@ -1,6 +1,7 @@
+import { togglePopup } from "../../lib.js";
 const audio = await Service.import("audio");
 
-export default function volumeSlider() {
+export default function volumeSlider(arrow = false) {
   const icons = {
     101: "overamplified",
     67: "high",
@@ -27,24 +28,35 @@ export default function volumeSlider() {
     }),
   });
 
+  const vslider = Widget.Slider({
+    css: audio.speaker.bind("volume").as((v) => {
+      if (v < 0.97) return "scale highlight {border-radius: 0px 4px 4px 0px;}";
+      else {
+        const vol = v * 100 - 97;
+        return `scale highlight {border-radius: 0px calc(3px * ${vol} + 4px) calc(3px * ${vol}+4px) 0px;}`;
+      }
+    }),
+    hexpand: true,
+    drawValue: false,
+    onChange: ({ value }) => (audio["speaker"].volume = value),
+    value: audio["speaker"].bind("volume"),
+  });
+
+  const abutton = Widget.Button({
+    hpack: "end",
+    cursor: "pointer",
+    onClicked: () => {
+      togglePopup("sounddemon");
+    },
+
+    child: Widget.Icon("go-next-symbolic"),
+  });
+  const childs = [icon, vslider];
+
+  const children = arrow ? childs.concat([abutton]) : childs;
+
   return Widget.Box({
     className: "slider",
-    children: [
-      icon,
-      Widget.Slider({
-        css: audio.speaker.bind("volume").as((v) => {
-          if (v < 0.97)
-            return "scale highlight {border-radius: 0px 4px 4px 0px;}";
-          else {
-            const vol = v * 100 - 97;
-            return `scale highlight {border-radius: 0px calc(3px * ${vol} + 4px) calc(3px * ${vol}+4px) 0px;}`;
-          }
-        }),
-        hexpand: true,
-        drawValue: false,
-        onChange: ({ value }) => (audio["speaker"].volume = value),
-        value: audio["speaker"].bind("volume"),
-      }),
-    ],
+    children: children,
   });
 }

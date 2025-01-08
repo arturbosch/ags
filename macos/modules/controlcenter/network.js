@@ -1,12 +1,16 @@
-import { togglePopup } from "../../config.js";
+import { togglePopup } from "../../lib.js";
 const network = await Service.import("network");
 
 const net = () => {
   const icon = Widget.Icon({
-    icon: network.wifi.bind("icon_name"),
+    icon: Utils.merge(
+      [network.wired.bind("icon_name"), network.wired.bind("internet")],
+      (icon, state) => icon,
+    ),
   });
   const label = Widget.Label({
     hpack: "start",
+    truncate: "end",
     label: network.wifi.bind("ssid").as((ssid) => ssid || "unknown"),
   });
 
@@ -43,6 +47,7 @@ const eth = () => {
     icon: network.wired.bind("icon_name"),
   });
   const label = Widget.Label({
+    truncate: "end",
     label: "Wired",
   });
 

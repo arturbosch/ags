@@ -16,7 +16,10 @@ const WifiIndicator = () =>
 
 const WiredIndicator = () =>
   Widget.Icon({
-    icon: network.wired.bind("icon_name"),
+    icon: Utils.merge(
+      [network.wired.bind("icon_name"), network.wired.bind("internet")],
+      (icon, state) => icon,
+    ),
   });
 
 const tailscale = Variable("", {

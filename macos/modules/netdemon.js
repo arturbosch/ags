@@ -155,10 +155,20 @@ const apbox = () =>
     child: apblocks(),
   });
 
-export default function Wifi() {
-  return Widget.Box({
+const wifi = () =>
+  Widget.Box({
     vertical: true,
     class_names: ["netdemon", "popup"],
     children: [header(), apbox()],
+  });
+
+export default function netdemon(monitor) {
+  return Widget.Window({
+    name: `netdemon${monitor}`,
+    visible: false,
+    anchor: ["top", "right"],
+    monitor,
+    margins: [7, 70],
+    child: wifi(),
   });
 }

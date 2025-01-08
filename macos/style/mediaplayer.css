@@ -9,14 +9,13 @@
 
 .img {
   border-radius: 13px 13px 0px 0px;
-  min-width: 350px;
   min-height: 160px;
   background-size: cover;
   background-position: center;
 }
 
 .player * {
-  color: grey;
+  color: darkgray;
 }
 
 .player .title {

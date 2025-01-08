@@ -1,16 +1,24 @@
 const hypr = await Service.import("hyprland");
 
 function getmap() {
-  return Utils.exec(
+  const lang = Utils.exec(
     `bash -c "hyprctl devices -j | jq -c '.keyboards.[] | select(.main == true)| .active_keymap' | xargs"`,
   );
+  if (lang == "Norwegian") {
+    return "NO";
+  }
+  return "EN";
 }
 
 export default function Keymap() {
-  return Widget.Label({
-    css: "color: gray;",
-    label: Utils.watch(getmap(), hypr, "keyboard-layout", () => {
-      return getmap();
+  return Widget.Button({
+    className: "keymap",
+    cursor: "pointer",
+    child: Widget.Label({
+      label: Utils.watch(getmap(), hypr, "keyboard-layout", () => getmap()),
     }),
+    onClicked: () => {
+      console.log("keymap");
+    },
   });
 }

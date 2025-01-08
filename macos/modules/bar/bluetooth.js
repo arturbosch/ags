@@ -1,7 +1,7 @@
-import { togglePopup } from "../../config.js";
+import { togglePopup } from "../../lib.js";
 const bluetooth = await Service.import("bluetooth");
 
-const bstatus = (mode = false) => {
+const bstatus = () => {
   const icon = Widget.Icon({
     icon: bluetooth
       .bind("connected_devices")
@@ -12,12 +12,8 @@ const bstatus = (mode = false) => {
       ),
   });
 
-  const label = Widget.Label({
-    label: bluetooth.bind("connected_devices").as((devs) => devs[0].alias),
-  });
-
   return Widget.Box({
-    children: mode ? [icon, label] : [icon],
+    children: [icon],
   });
 };
 

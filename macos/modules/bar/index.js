@@ -11,7 +11,7 @@ function Left() {
   return Widget.Box({
     className: "left",
     hpack: "start",
-    children: [Workspaces(), Keymap()],
+    children: [Workspaces()],
   });
 }
 
@@ -19,7 +19,7 @@ function Right() {
   return Widget.Box({
     className: "right",
     hpack: "end",
-    children: [Bluetooth(), Network(), Volume(), Battery(), Clock()],
+    children: [Keymap(), Bluetooth(), Network(), Volume(), Battery(), Clock()],
   });
 }
 

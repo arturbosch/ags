@@ -1,4 +1,4 @@
-import { togglePopup } from "../../config.js";
+import { togglePopup } from "../../lib.js";
 const bluetooth = await Service.import("bluetooth");
 
 export default function bluetoothButton() {

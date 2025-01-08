@@ -1,4 +1,4 @@
-import { togglePopup } from "../../config.js";
+import { togglePopup } from "../../lib.js";
 const network = await Service.import("network");
 
 const net = (mode = false) => {
@@ -21,7 +21,10 @@ const net = (mode = false) => {
 
 const eth = (mode = false) => {
   const icon = Widget.Icon({
-    icon: network.wired.bind("icon_name"),
+    icon: Utils.merge(
+      [network.wired.bind("icon_name"), network.wired.bind("internet")],
+      (icon, state) => icon,
+    ),
   });
   const label = Widget.Label({
     label: "Wired",
@@ -29,7 +32,9 @@ const eth = (mode = false) => {
 
   return Widget.Button({
     onClicked: () =>
-      Utils.exec("env XDG_CURRENT_DESKTOP=gnome gnome-control-center network"),
+      Utils.execAsync(
+        "env XDG_CURRENT_DESKTOP=gnome gnome-control-center network",
+      ),
     child: Widget.Box({
       children: mode ? [icon, label] : [icon],
     }),

@@ -1,4 +1,4 @@
-import { togglePopup } from "../../config.js";
+import { togglePopup } from "../../lib.js";
 const audio = await Service.import("audio");
 
 const icons = {

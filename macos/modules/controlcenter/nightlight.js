@@ -1,6 +1,6 @@
 export default function nightlightButton() {
   const icon = Widget.Icon("night-light-symbolic");
-  const label = Widget.Label("Night Light");
+  const label = Widget.Label({ label: "Night Light", truncate: "end" });
 
   const active = Variable(
     Utils.exec(`bash -c "systemctl --user is-active nightlight"`) == "active",

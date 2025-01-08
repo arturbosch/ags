@@ -7,10 +7,6 @@
   margin: 0px;
 }
 
-.switches > * {
-  min-width: 185px;
-}
-
 .togglebtn {
   background-color: @bg2;
   border-radius: 13px;
@@ -44,4 +40,11 @@
 
 .switches .active {
   background-color: @accent;
+}
+
+.controlcenter .header {
+  margin-bottom: 5px;
+}
+.controlcenter .header box {
+  padding: 0 3px;
 }

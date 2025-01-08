@@ -126,10 +126,20 @@ const devicebox = () =>
     child: deviceblocks(),
   });
 
-export default function Bluetooth() {
-  return Widget.Box({
+const win = () =>
+  Widget.Box({
     vertical: true,
     class_names: ["popup", "bluedemon"],
     children: [header(), devicebox()],
+  });
+
+export default function bluedemon(monitor) {
+  return Widget.Window({
+    name: `bluedemon${monitor}`,
+    visible: false,
+    anchor: ["top", "right"],
+    monitor,
+    margins: [7, 110],
+    child: win(),
   });
 }

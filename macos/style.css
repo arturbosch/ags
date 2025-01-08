@@ -5,6 +5,8 @@
 @import url("./style/mediaplayer.css");
 @import url("./style/power.css");
 @import url("./style/notifications.css");
+@import url("./style/keymap.css");
+@import url("./style/sound.css");
 @import url("./style/controlcenter.css");
 
 * {

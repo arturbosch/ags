@@ -94,8 +94,8 @@ const outputs = () =>
     child: outblocks(),
   });
 
-export default function Sound() {
-  return Widget.Box({
+const sound = () =>
+  Widget.Box({
     vertical: true,
     class_names: ["popup", "audiodemon"],
     children: [
@@ -106,5 +106,15 @@ export default function Sound() {
       Widget.Separator(),
       mediaPlayer(),
     ],
+  });
+
+export default function sounddemon(monitor = 0) {
+  return Widget.Window({
+    margins: [7, 20],
+    visible: false,
+    name: `sounddemon${monitor}`,
+    monitor,
+    anchor: ["top", "right"],
+    child: sound(),
   });
 }

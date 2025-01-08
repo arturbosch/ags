@@ -104,10 +104,20 @@ const header = () =>
     endWidget: settings(),
   });
 
-export default function Power() {
-  return Widget.Box({
+const power = () =>
+  Widget.Box({
     vertical: true,
     class_names: ["popup", "powerdemon"],
     children: [header(), batterylevel(), Widget.Separator(), powermodes()],
+  });
+
+export default function powerdemon(monitor) {
+  return Widget.Window({
+    margins: [7, 20],
+    visible: false,
+    name: `powerdemon${monitor}`,
+    monitor,
+    anchor: ["top", "right"],
+    child: power(),
   });
 }

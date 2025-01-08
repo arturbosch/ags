@@ -1,4 +1,4 @@
-import { togglePopup } from "../../config.js";
+import { togglePopup } from "../../lib.js";
 const powerprofiles = await Service.import("powerprofiles");
 
 const nameMap = {
@@ -12,6 +12,7 @@ export default function powerProfilesButton() {
     icon: powerprofiles.bind("icon_name"),
   });
   const label = Widget.Label({
+    truncate: "end",
     hpack: "start",
     label: powerprofiles
       .bind("active_profile")
