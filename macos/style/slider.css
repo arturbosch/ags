@@ -1,6 +1,12 @@
 .slider {
   padding: 5px;
 }
+
+.slider * {
+  padding: 0px;
+  min-height: 1px;
+}
+
 .slider > *:first-child {
   all: unset;
 }

@@ -4,19 +4,20 @@
 @import url("./style/slider.css");
 @import url("./style/mediaplayer.css");
 @import url("./style/power.css");
-@import url("./style/notifications.css");
 @import url("./style/keymap.css");
 @import url("./style/sound.css");
 @import url("./style/controlcenter.css");
+@import url("./style/switch.css");
+@import url("./style/notifications.css");
+@import url("./style/powermenu.css");
 
 * {
   font-family: Cantarell;
   font-weight: normal;
   font-size: 13px;
+  min-width: 1px;
+  min-height: 1px;
   background-color: transparent;
-  padding: 0px;
-  min-width: 0px;
-  min-height: 0px;
   color: @fg;
 }
 
@@ -32,12 +33,12 @@ button:hover {
   font-weight: bold;
 }
 
-.clock {
-  margin-left: 8px;
+.right button {
+  padding: 0 6px;
 }
 
-.right button {
-  padding: 0 5px;
+.center button {
+  padding: 0 6px;
 }
 
 .left > * {

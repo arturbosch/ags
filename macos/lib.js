@@ -39,6 +39,15 @@ export function refreshMon(population) {
   populateMon(population);
 }
 
+export function close() {
+  if (openWindow[0]) {
+    App.closeWindow(openWindow[0]);
+    hyprland.monitors.forEach((monitor) => {
+      App.closeWindow(`windowCloser${monitor}`);
+    });
+  }
+}
+
 export function closer(monitor) {
   return Widget.Window({
     name: `windowCloser${monitor}`,

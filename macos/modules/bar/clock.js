@@ -5,9 +5,9 @@ const date = Variable("", {
 
 export default function Clock() {
   return Widget.Button({
+    class_name: "clock",
     onClicked: () => togglePopup("controldemon"),
     child: Widget.Label({
-      class_name: "clock",
       label: date.bind(),
     }),
   });

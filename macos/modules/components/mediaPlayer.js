@@ -169,6 +169,8 @@ export default function mediaPlayer() {
     spacing: 15,
     vertical: true,
     visible: players.as((p) => p.length > 0),
-    children: players.as((p) => p.map(mplayer)),
+    children: players.as((p) =>
+      p.filter((p) => p.play_back_status != "Stopped").map(mplayer),
+    ),
   });
 }

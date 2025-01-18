@@ -123,8 +123,7 @@ const header = () =>
               icon: "system-shutdown-symbolic",
             }),
             onClicked: () => {
-              revel.reveal_child = true;
-              console.log("hei");
+              togglePopup("powermenu");
             },
           }),
         ],

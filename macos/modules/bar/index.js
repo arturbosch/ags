@@ -1,3 +1,4 @@
+import history from "./notifications.js";
 import Workspaces from "./workspaces.js";
 import Keymap from "./keymap.js";
 import Volume from "./volume.js";
@@ -15,11 +16,26 @@ function Left() {
   });
 }
 
+function Center() {
+  return Widget.Box({
+    className: "center",
+    children: [],
+  });
+}
+
 function Right() {
   return Widget.Box({
     className: "right",
     hpack: "end",
-    children: [Keymap(), Bluetooth(), Network(), Volume(), Battery(), Clock()],
+    children: [
+      Keymap(),
+      history(),
+      Bluetooth(),
+      Network(),
+      Volume(),
+      Battery(),
+      Clock(),
+    ],
   });
 }
 
@@ -32,6 +48,7 @@ export default function bar(monitor) {
     exclusivity: "exclusive",
     child: Widget.CenterBox({
       start_widget: Left(),
+      center_widget: Center(),
       end_widget: Right(),
     }),
   });

@@ -1,0 +1,15 @@
+.siitch image {
+  color: transparent;
+}
+
+.siitch {
+  background-color: @bg2;
+}
+
+.siitch:checked {
+  background-color: @accent;
+}
+
+.siitch slider {
+  background-color: white;
+}

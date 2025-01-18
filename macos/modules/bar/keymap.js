@@ -18,7 +18,7 @@ export default function Keymap() {
       label: Utils.watch(getmap(), hypr, "keyboard-layout", () => getmap()),
     }),
     onClicked: () => {
-      console.log("keymap");
+      Utils.execAsync(`bash -c "hyprctl switchxkblayout all next"`);
     },
   });
 }
