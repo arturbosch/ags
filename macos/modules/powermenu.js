@@ -1,4 +1,5 @@
 import { close } from "../lib.js";
+
 const buttons = () =>
   Widget.Box({
     class_names: ["popup", "powermenu"],
@@ -60,6 +61,8 @@ const buttons = () =>
         },
       }),
     ],
+  }).keybind("Escape", (self, event) => {
+    close();
   });
 
 export default function powermenu(monitor) {

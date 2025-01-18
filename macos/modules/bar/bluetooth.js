@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const bluetooth = await Service.import("bluetooth");
 
 const bstatus = () => {

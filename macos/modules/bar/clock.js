@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const date = Variable("", {
   poll: [1000, 'date "+%a %d %b %H:%M"'],
 });

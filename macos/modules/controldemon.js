@@ -1,5 +1,4 @@
 const battery = await Service.import("battery");
-import { togglePopup } from "../lib.js";
 
 import bluetoothButton from "./controlcenter/bluetooth.js";
 import networkButton from "./controlcenter/network.js";

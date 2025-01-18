@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const battery = await Service.import("battery");
 
 export default function Battery() {

@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const network = await Service.import("network");
 
 const net = (mode = false) => {

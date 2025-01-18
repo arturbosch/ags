@@ -3,7 +3,7 @@ const hyprland = await Service.import("hyprland");
 const openWindow = [];
 const monitors = [];
 
-export function togglePopup(name) {
+globalThis.togglePopup = function togglePopup(name) {
   let mon = 0;
   hyprland.monitors.forEach((monitor) => {
     if (monitor.focused == true) {
@@ -23,7 +23,7 @@ export function togglePopup(name) {
     App.openWindow(`windowCloser${mon}`);
     App.openWindow(name + mon);
   }
-}
+};
 export function populateMon(population) {
   hyprland.monitors.forEach((mon) => {
     monitors.push(mon.id);
@@ -42,9 +42,9 @@ export function refreshMon(population) {
 export function close() {
   if (openWindow[0]) {
     App.closeWindow(openWindow[0]);
-    hyprland.monitors.forEach((monitor) => {
-      App.closeWindow(`windowCloser${monitor}`);
-    });
+    for (let i = 0; i < monitors.length; i++) {
+      App.closeWindow(`windowCloser${i}`);
+    }
   }
 }
 

@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const powerprofiles = await Service.import("powerprofiles");
 
 const nameMap = {

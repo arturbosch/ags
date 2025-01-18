@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const notifications = await Service.import("notifications");
 
 export default function history() {

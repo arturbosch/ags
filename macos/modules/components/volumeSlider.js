@@ -1,4 +1,3 @@
-import { togglePopup } from "../../lib.js";
 const audio = await Service.import("audio");
 
 export default function volumeSlider(arrow = false) {
