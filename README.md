@@ -7,6 +7,8 @@ Heavily inspired by gnome/macos/tesla type design.
 
 Network widget is a bit buggy. Will be fixed when I switch to agsv2/astal.
 
+Wallpaper can be found [here](https://github.com/anewdi/wallz) (solarWater.jpg)
+
 ## Requirements
 
 I use [moreWaita](https://github.com/somepaulo/MoreWaita) icons.
@@ -21,7 +23,7 @@ Below is a list of requirements for the specific widgets/functions to work as in
 * Sound: `playerctl`, `pulseaudio`/`pipewire-pulse`
 * Powerprofiles: `power-profiles-daemon`
 * Recorder: `wf-recorder`
-* Nightlight: Should work with (stop/start/status) any systemd user service named "nightlight". Obviosly you can also change this in the code.
+* Nightlight: Should work with (stop/start/status) any systemd user service named "nightlight". Obviously you can also change this in the code.
 
 ### Gnome control center
 `gnome-control-center` is optional.
