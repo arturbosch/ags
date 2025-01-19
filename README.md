@@ -1,6 +1,6 @@
 # LucioBar
 
-![Preview Image](./preview/image.png)
+![Preview Image](./preview/preview.png)
 
 Bar and widgets made with ags by me.
 
