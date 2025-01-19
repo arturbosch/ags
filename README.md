@@ -1,8 +1,6 @@
 # LucioBar
 
-
-https://github.com/user-attachments/assets/d142e57d-a25d-4ddb-ab46-311417458211
-![Preview Image](./preview/preview.png)
+![Preview Image](![image](https://github.com/user-attachments/assets/d7ffe75f-bf06-4c06-8f9c-08015bd7c558))
 
 Bar and widgets made with ags by me.
 
