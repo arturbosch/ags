@@ -5,6 +5,7 @@ const net = () => {
     onClicked: () => {
       togglePopup("networkWidget");
     },
+      visible: network.wifi.bind("enabled"),
     child: Widget.Icon({
       icon: network.wifi.bind("icon_name"),
     }),

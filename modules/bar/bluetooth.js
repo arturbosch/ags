@@ -14,6 +14,7 @@ export default function Bluetooth() {
   return Widget.Button({
     class_name: "bluetooth",
     onClicked: () => togglePopup("bluetoothWidget"),
+      visible: bluetooth.bind("enabled"),
     child: Widget.Box({
       children: [icon],
     }),
