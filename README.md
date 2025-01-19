@@ -31,5 +31,4 @@ I have two types of powermenu, `powermenu` and `powermenuRight`. On my setup i u
 
 ## Video preview
 
-https://github.com/user-attachments/assets/e09f1b0f-9004-4522-b327-b9e0a4411677
-
+https://github.com/user-attachments/assets/4e67e22d-a67b-418b-b752-07f591a1ee18
