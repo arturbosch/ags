@@ -12,7 +12,7 @@ Heavily inspired by gnome/macos/tesla type design.
 
 Below is a list of requirements for the specific widgets/functions to work as intended
 
-* Wifi: Networkmanager
+* Wifi: `networkmanager`
 * Workspaces: `hyprland`
 * Keymap: `jq`, `hyprland`
 * Notifications: No other notification daemon running
