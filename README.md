@@ -22,6 +22,28 @@ Below is a list of requirements for the specific widgets/functions to work as in
 * Powerprofiles: `power-profiles-daemon`
 * Recorder: `wf-recorder`
 
+### Gnome control center
+`gnome-control-center` is optional.
+
+The settings icon on any given widget tries to open gnome control center at the section corresponding to the widget function(bluetooth widget -> gnome bluetooth page). 
+
+#### Gnome control center bluetooh
+For gnome bluetooth to work you need to have `gsd-rfkill` running. It is a part of `gnome-settings-daemon`. Personally, I have a systemd user service that launches it along with my graphical environement: 
+```
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+BusName=org.gnome.SettingsDaemon.Rfkill
+ExecStart=/nix/store/ra1chwq2ipg109gqsh7vgm8wfrmh6v6s-gnome-settings-daemon-47.2/libexec/gsd-rfkill #Replace with correct path for your package manager/distro
+Restart=on-failure
+TimeoutStopSec=5
+Type=dbus
+
+[Unit]
+Description=Gnome RFKill support service
+```
+
 ## The widgets
 
 You will find the widgets under `./modules`.
