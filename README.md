@@ -6,6 +6,8 @@ Bar and widgets made with ags by me.
 
 Heavily inspired by gnome/macos/tesla type design.
 
+Network widget is a bit buggy. Will be fixed when I switch to agsv2/astal.
+
 ## Requirements
 
 I use [moreWaita](https://github.com/somepaulo/MoreWaita) icons.
