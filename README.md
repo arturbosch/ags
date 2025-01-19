@@ -6,9 +6,9 @@ Bar and widgets made with ags by me.
 
 Heavily inspired by gnome/macos/tesla type design.
 
-
-
 ## Requirements
+
+I use [moreWaita](https://github.com/somepaulo/MoreWaita) icons.
 
 Below is a list of requirements for the specific widgets/functions to work as intended
 
