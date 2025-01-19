@@ -1,6 +1,6 @@
 # LucioBar
 
-![Preview Image](./preview/preview.png)
+![image](https://github.com/user-attachments/assets/d7ffe75f-bf06-4c06-8f9c-08015bd7c558)
 
 Bar and widgets made with ags by me.
 
@@ -26,3 +26,8 @@ Below is a list of requirements for the specific widgets/functions to work as in
 You will find the widgets under `./modules`.
 
 I have two types of powermenu, `powermenu` and `powermenuRight`. On my setup i use both. One on the right for activation from the control center, and one centered which i activate with a keybind: `$mainMod, ESCAPE, exec, ags -r "togglePopup('powermenu')"'`
+
+## Video preview
+
+https://github.com/user-attachments/assets/e09f1b0f-9004-4522-b327-b9e0a4411677
+
