@@ -1,7 +1,12 @@
+# LucioBar
+
+[![Preview Video](./preview/video.mp4)]
 
 Bar and widgets made with ags by me.
 
 Heavily inspired by gnome/macos/tesla type design.
+
+
 
 ## Requirements
 
