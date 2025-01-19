@@ -13,7 +13,7 @@ I use [moreWaita](https://github.com/somepaulo/MoreWaita) icons.
 
 Below is a list of requirements for the specific widgets/functions to work as intended
 
-* Wifi: `networkmanager`
+* Wifi: `networkmanager`, `nm-applet` for authentication window
 * Workspaces: `hyprland`
 * Keymap: `jq`, `hyprland`
 * Notifications: No other notification daemon running
