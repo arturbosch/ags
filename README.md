@@ -21,6 +21,7 @@ Below is a list of requirements for the specific widgets/functions to work as in
 * Sound: `playerctl`, `pulseaudio`/`pipewire-pulse`
 * Powerprofiles: `power-profiles-daemon`
 * Recorder: `wf-recorder`
+* Nightlight: Should work with (stop/start/status) any systemd user service named "nightlight". Obviosly you can also change this in the code.
 
 ### Gnome control center
 `gnome-control-center` is optional.
