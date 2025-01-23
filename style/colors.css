@@ -1,4 +1,4 @@
-@define-color bar                     rgba(41, 42, 48, 0.6);
+@define-color bar                     rgba(41, 42, 48, 1);
 @define-color fg                      white;
 
 @define-color bg                      rgba(41, 42, 48, 1);
@@ -11,7 +11,7 @@
 @define-color hoverClear              rgba(72, 73, 79, 0.8);
 
 /*blue*/
-@define-color accent                            #3169b0;
+@define-color accent                            #899F93;
 
 /*Red*/
 @define-color accent2                           lightcoral;
