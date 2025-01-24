@@ -81,5 +81,5 @@ export function powermenu(monitor) {
 }
 
 export function powermenuRight(monitor) {
-  return pmenu(monitor, "powermenuRight", ["top", "right"]);
+  return pmenu(monitor, "powermenuRight", ["top", "center"]);
 }
