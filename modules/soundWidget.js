@@ -103,8 +103,6 @@ const sound = () =>
       volumeSlider(),
       Widget.Separator(),
       outputs(),
-      Widget.Separator(),
-      mediaPlayer(),
     ],
   });
 
