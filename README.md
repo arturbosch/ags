@@ -17,7 +17,7 @@ Below is a list of requirements for the specific widgets/functions to work as in
 
 * Wifi: `networkmanager`, `nm-applet` for authentication window
 * Workspaces: `hyprland`
-* Keymap: `jq`, `hyprland`
+* Keymap: `jq`, `hyprland` - made to work solely with Norwegian and English. This is easy to change in the code tho `./modules/bar/keymap.js`
 * Notifications: No other notification daemon running
 * Bluetooth: `bluez`
 * Sound: `playerctl`, `pulseaudio`/`pipewire-pulse`
