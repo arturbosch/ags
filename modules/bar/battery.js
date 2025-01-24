@@ -15,7 +15,7 @@ export default function Battery() {
     child: Widget.Box({
       children: [
         Widget.Icon({ icon }),
-        Widget.Label({ label: battery.bind("percent").as((p) => `${p}%`) }),
+        Widget.Label({ label: battery.bind("percent").as((p) => ` ${p}%`) }),
       ],
     }),
   });
