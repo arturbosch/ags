@@ -53,6 +53,8 @@ You will find the widgets under `./modules`.
 
 I have two types of powermenu, `powermenu` and `powermenuRight`. On my setup i use both. One on the right for activation from the control center, and one centered which i activate with a keybind: `$mainMod, ESCAPE, exec, ags -r "togglePopup('powermenu')"'`
 
+If you do not want firefox to show in media playing widget (and dont want to change the code), you can set the following setting in: `media.hardwaremediakeys.enabled = false`
+
 ## Video preview
 
 https://github.com/user-attachments/assets/4e67e22d-a67b-418b-b752-07f591a1ee18
