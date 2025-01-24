@@ -2,6 +2,7 @@ const notifications = await Service.import("notifications");
 const popups = notifications.bind("popups");
 
 notifications.popupTimeout = 6000;
+notifications.clearDelay = 300;
 notifications.cacheActions = false;
 
 function notification(event) {

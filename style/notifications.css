@@ -28,6 +28,10 @@
   padding: 4px 20px;
 }
 
+.notifications .footer button:hover{
+  background-color: @hover;
+}
+
 .image {
   min-width: 50px;
   margin: 15px 0;
@@ -55,3 +59,4 @@
   border-radius: 13px 13px 15px 20px;
   background-color: @bg;
 }
+
