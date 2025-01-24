@@ -19,7 +19,7 @@ function Left() {
 function Center() {
   return Widget.Box({
     className: "center",
-    children: [],
+    children: [Clock()],
   });
 }
 
@@ -34,7 +34,6 @@ function Right() {
       Network(),
       Volume(),
       Battery(),
-      Clock(),
     ],
   });
 }

@@ -1,5 +1,5 @@
 const date = Variable("", {
-  poll: [1000, 'date "+%a %d %b %H:%M"'],
+  poll: [1000, 'date "+%a %d. %b %H:%M"'],
 });
 
 export default function Clock() {
@@ -7,6 +7,7 @@ export default function Clock() {
     class_name: "clock",
     onClicked: () => togglePopup("controlWidget"),
     child: Widget.Label({
+      css: "font-size: 1rem;",
       label: date.bind(),
     }),
   });
