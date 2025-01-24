@@ -19,7 +19,9 @@ function Left() {
 function Center() {
   return Widget.Box({
     className: "center",
-    children: [Clock()],
+    children: [
+      History(),
+      Clock()],
   });
 }
 
@@ -29,7 +31,6 @@ function Right() {
     hpack: "end",
     children: [
       Keymap(),
-      History(),
       Bluetooth(),
       Network(),
       Volume(),
