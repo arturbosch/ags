@@ -4,8 +4,17 @@ function getmap() {
   const lang = Utils.exec(
     `bash -c "hyprctl devices -j | jq -c '.keyboards.[] | select(.main == true)| .active_keymap' | xargs"`,
   );
-  if (lang == "Norwegian") {
-    return "NO";
+  if (lang === "German") {
+    return "DE";
+  }
+  if (lang === "Russian") {
+    return "RU";
+  }
+  if (lang === "Chinese") {
+    return "CN";
+  }
+  if (lang === "Romanian") {
+    return "RO"
   }
   return "EN";
 }
