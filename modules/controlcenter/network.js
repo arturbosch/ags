@@ -54,9 +54,6 @@ const eth = () => {
       Widget.Button({
         className: "toggle",
         hexpand: true,
-        onClicked: () => {
-          network.toggleWifi();
-        },
         child: Widget.Box({
           children: [icon, label],
         }),
