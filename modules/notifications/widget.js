@@ -67,6 +67,8 @@ function notification(event) {
     icon.icon = event.app_icon + "symbolic";
   } else if (event.image && event.image == "nm-signal-100") {
     icon.icon = "network-wireless-signal-excellent-symbolic";
+  } else if (event.image && event.image == "nm-device-wired") {
+    icon.icon = "network-wired-symbolic";
   } else if (event.image) {
     icon.icon = "";
     icon.css = `background-image: url('${event.image}')`;
