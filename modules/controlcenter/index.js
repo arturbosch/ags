@@ -156,7 +156,6 @@ const control = () =>
       brightnessSlider(),
       Widget.Separator(),
       switches(),
-      Widget.Separator(),
       mediaPlayer(),
     ],
   });

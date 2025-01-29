@@ -1,4 +1,3 @@
-import mediaPlayer from "./common/mediaPlayer.js";
 import volumeSlider from "./common/volumeSlider.js";
 
 const audio = await Service.import("audio");
@@ -98,12 +97,7 @@ const sound = () =>
   Widget.Box({
     vertical: true,
     class_names: ["popup", "soundWidget"],
-    children: [
-      header(),
-      volumeSlider(),
-      Widget.Separator(),
-      outputs(),
-    ],
+    children: [header(), volumeSlider(), Widget.Separator(), outputs()],
   });
 
 export default function soundWidget(monitor) {

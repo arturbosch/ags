@@ -1,3 +1,8 @@
+.mediaplayer {
+  margin: 0px;
+  padding: 0px;
+}
+
 .player {
   border-radius: 13px 13px 0px 0px;
   padding: 10px;
@@ -60,4 +65,8 @@ scale.position slider {
 
 .hoverControls .play-pause {
   min-width: 120px;
+}
+
+.mediaplayer > *:first-child separator {
+  margin-top: 25px;
 }

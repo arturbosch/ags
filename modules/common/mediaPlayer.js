@@ -142,6 +142,7 @@ function mplayer(player) {
   return Widget.Box({
     vertical: true,
     children: [
+      Widget.Separator(),
       Widget.Overlay({
         child: Widget.Overlay({
           child: img,
@@ -164,8 +165,8 @@ function mplayer(player) {
 
 export default function mediaPlayer() {
   return Widget.Box({
+    vexpand: true,
     className: "mediaplayer",
-    css: "padding: 0px; margin: 0px;",
     spacing: 15,
     vertical: true,
     visible: players.as((p) => p.length > 0),
