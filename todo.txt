@@ -1,0 +1,3 @@
+- more bottom margin for windows
+- battery is always discharging
+- get recording to work
