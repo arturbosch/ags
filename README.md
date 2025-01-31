@@ -1,9 +1,7 @@
 
 ![image](https://github.com/user-attachments/assets/d7ffe75f-bf06-4c06-8f9c-08015bd7c558)
 
-Bar and widgets made with ags by me.
-
-Heavily inspired by gnome/macos/tesla type design.
+Bar and widgets made w ags. 
 
 Network widget is a bit buggy. Will be fixed when I switch to agsv2/astal.
 
@@ -26,9 +24,7 @@ Below is a list of requirements for the specific widgets/functions to work as in
 * Nightlight: Should work with (stop/start/status) any systemd user service named "nightlight". Obviously you can also change this in the code.
 
 ### Gnome control center
-`gnome-control-center` is optional.
-
-The settings icon on any given widget tries to open gnome control center at the section corresponding to the widget function(bluetooth widget -> gnome bluetooth page). 
+`gnome-control-center` is neccessary for settings icon to work. On any given widget it tries to open gnome control center at the section corresponding to the widget function(bluetooth widget -> gnome bluetooth page). 
 
 #### Gnome control center bluetooh
 For gnome bluetooth to work you need to have `gsd-rfkill` running. It is a part of `gnome-settings-daemon`. Personally, I have a systemd user service that launches it along with my graphical environement: 
@@ -53,7 +49,7 @@ You will find the widgets under `./modules`.
 
 I have two types of powermenu, `powermenu` and `powermenuRight`. On my setup i use both. One on the right for activation from the control center, and one centered which i activate with a keybind: `$mainMod, ESCAPE, exec, ags -r "togglePopup('powermenu')"'`
 
-If you do not want firefox to show in media playing widget (and dont want to change the code), you can set the following setting in: `media.hardwaremediakeys.enabled = false`
+If you do not want firefox to show in media playing widget (and dont want to change the code), you can set the following setting in firefox(about:config): `media.hardwaremediakeys.enabled = false`
 
 ## Video preview
 
