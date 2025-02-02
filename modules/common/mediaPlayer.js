@@ -101,6 +101,7 @@ function mplayer(player) {
       class_name: "play-pause",
       on_clicked: () => player.playPause(),
       visible: player.bind("can_play"),
+      hexpand: true,
       child: Widget.Icon({
         icon: player.bind("play_back_status").transform((s) => {
           switch (s) {
@@ -149,11 +150,10 @@ function mplayer(player) {
           overlays: [playerUi],
         }),
         overlays: [
-          Widget.CenterBox({
+          Widget.Box({
+            homogeneous: true,
             className: "hoverControls",
-            startWidget: prev(),
-            centerWidget: playPause(),
-            endWidget: next(),
+            children: [prev(), playPause(), next()],
           }),
         ],
         passThrough: false,

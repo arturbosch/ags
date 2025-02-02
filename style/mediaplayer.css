@@ -63,10 +63,6 @@ scale.position slider {
   opacity: 1;
 }
 
-.hoverControls .play-pause {
-  min-width: 120px;
-}
-
 .mediaplayer > *:first-child separator {
   margin-top: 25px;
 }
