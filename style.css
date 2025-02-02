@@ -12,9 +12,9 @@
 @import url("./style/powermenu.css");
 
 * {
-  font-family: Cantarell;
+  font-family: Inter;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 1rem;
   min-width: 1px;
   min-height: 1px;
   background-color: transparent;

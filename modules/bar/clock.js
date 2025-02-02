@@ -7,7 +7,7 @@ export default function Clock() {
     class_name: "clock",
     onClicked: () => togglePopup("controlWidget"),
     child: Widget.Label({
-      css: "font-size: 1rem;",
+      css: "font-size: 0.95rem;",
       label: date.bind(),
     }),
   });
