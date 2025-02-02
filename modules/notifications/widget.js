@@ -187,7 +187,7 @@ export default function notificationWidget(monitor) {
     visible: false,
     name: `notificationWidget${monitor}`,
     monitor,
-    anchor: ["top", "right"],
+    anchor: ["top", "center"],
     child: history(),
   });
 }

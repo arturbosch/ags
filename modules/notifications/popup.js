@@ -146,7 +146,7 @@ export default function notificationPopup(monitor) {
       .as((p) => (p.length > 0 ? true : false)),
     name: `notificationPopup${monitor}`,
     monitor,
-    anchor: ["top", "right"],
+    anchor: ["top", "center"],
     child: pops(),
   });
 }
