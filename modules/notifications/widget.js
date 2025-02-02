@@ -64,7 +64,7 @@ function notification(event) {
   });
 
   if (event.app_icon) {
-    icon.icon = event.app_icon + "symbolic";
+    icon.icon = event.app_icon;
   } else if (event.image && event.image == "nm-signal-100") {
     icon.icon = "network-wireless-signal-excellent-symbolic";
   } else if (event.image && event.image == "nm-device-wired") {
