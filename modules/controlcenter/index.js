@@ -63,18 +63,19 @@ const recorder = () => {
   const active = Variable(false);
   const time = Variable(0);
 
+  function counter() {
+    if (active.value) {
+      time.value++;
+      setTimeout(counter, 1000);
+    }
+  }
+
   const elapsed = Widget.Revealer({
     revealChild: active.bind(),
     transition: "slide_left",
     child: Widget.Label({
       css: "color: grey; font-weight: bold;",
       label: time.bind().as((t) => `Recording: ${t}s`),
-    }).poll(1000, () => {
-      if (active.value) {
-        time.value += 1;
-      } else {
-        time.value = 0;
-      }
     }),
   });
 
@@ -87,6 +88,7 @@ const recorder = () => {
       if (!active.value) {
         Utils.execAsync(`bash -c "wf-recorder -c libx264rgb -f ~/temp.mkv"`);
         active.value = true;
+        counter();
       } else {
         Utils.execAsync(`bash -c "pkill wf-recorder"`).then(
           () => (active.value = false),
