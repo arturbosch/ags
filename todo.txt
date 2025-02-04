@@ -1,2 +1,3 @@
 - battery is always discharging
 - get recording to work
+- systray widget
