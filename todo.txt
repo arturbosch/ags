@@ -1,3 +1,6 @@
 - battery is always discharging
 - get recording to work
 - systray widget
+- do not disturb needs to be cached between sessions
+- authenticator widget
+- get night light to work
