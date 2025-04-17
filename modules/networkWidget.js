@@ -105,9 +105,10 @@ const settings = () =>
     }),
   });
 
-const tailscale = Variable("", {
-  poll: [100000, `bash -c "tailscale status | grep 'linux'"`],
-});
+// const tailscale = Variable("", {
+//   poll: [100000, `bash -c "tailscale status | grep 'linux'"`],
+// });
+const tailscale = Variable(false)
 
 const header = () =>
   Widget.CenterBox({
@@ -122,7 +123,7 @@ const header = () =>
       Widget.Label({
         hpack: "start",
         css: "color: grey;",
-        label: tailscale.bind().as((tail) => (tail ? `via tailscale` : "")),
+        label: tailscale.bind().as((tail) => (tail ? 'via tailscale' : "")),
       }),
     ]),
     endWidget: Widget.Box({
