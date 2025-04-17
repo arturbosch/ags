@@ -183,7 +183,7 @@ const history = () =>
 
 export default function notificationWidget(monitor) {
   return Widget.Window({
-    margins: [7, 90],
+    margins: [7],
     visible: false,
     name: `notificationWidget${monitor}`,
     monitor,

@@ -139,7 +139,7 @@ export default function bluetoothWidget(monitor) {
     visible: false,
     anchor: ["top", "right"],
     monitor,
-    margins: [7, 110],
+    margins: [7],
     child: bluetoothBox(),
   });
 }

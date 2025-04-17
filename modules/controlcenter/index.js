@@ -168,7 +168,7 @@ export default function controlWidget(monitor) {
     visible: false,
     name: `controlWidget${monitor}`,
     monitor,
-    anchor: ["top", "center"],
+    anchor: ["top", "right"],
     child: control(),
   });
 }

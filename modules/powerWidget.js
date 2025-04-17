@@ -116,7 +116,7 @@ const power = () =>
 
 export default function powerWidget(monitor) {
   return Widget.Window({
-    margins: [7, 20],
+    margins: [7],
     visible: false,
     name: `powerWidget${monitor}`,
     monitor,

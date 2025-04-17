@@ -167,7 +167,7 @@ export default function networkWidget(monitor) {
     visible: false,
     anchor: ["top", "right"],
     monitor,
-    margins: [7, 70],
+    margins: [7],
     child: wifi(),
   });
 }

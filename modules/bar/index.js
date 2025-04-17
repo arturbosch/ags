@@ -19,9 +19,7 @@ function Left() {
 function Center() {
   return Widget.Box({
     className: "center",
-    children: [
-      History(),
-      Clock()],
+    children: [History(), Clock(), Keymap()],
   });
 }
 
@@ -29,13 +27,18 @@ function Right() {
   return Widget.Box({
     className: "right",
     hpack: "end",
-    children: [
-      Keymap(),
-      Bluetooth(),
-      Network(),
-      Volume(),
-      Battery(),
-    ],
+    children: [SettingsMenu()],
+  });
+}
+
+function SettingsMenu() {
+  return Widget.Button({
+    onClicked: () => togglePopup("controlWidget"),
+    child: Widget.Box({
+      className: "right",
+      hpack: "end",
+      children: [Bluetooth(), Network(), Volume(), Battery()],
+    }),
   });
 }
 

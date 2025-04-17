@@ -102,7 +102,7 @@ const sound = () =>
 
 export default function soundWidget(monitor) {
   return Widget.Window({
-    margins: [7, 20],
+    margins: [7],
     visible: false,
     name: `soundWidget${monitor}`,
     monitor,
