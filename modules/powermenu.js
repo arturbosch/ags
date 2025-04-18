@@ -77,9 +77,9 @@ const pmenu = (monitor, name, anchor) =>
   });
 
 export function powermenu(monitor) {
-  return pmenu(monitor, "powermenu", ["top"]);
+  return pmenu(monitor, "powermenu", ["top", "right"]);
 }
 
 export function powermenuRight(monitor) {
-  return pmenu(monitor, "powermenuRight", ["top"]);
+  return pmenu(monitor, "powermenuRight", ["top", "right"]);
 }
